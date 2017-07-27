@@ -25,18 +25,16 @@ Because of the PhotoSwipe dependency multiple steps are necessary for a proper i
 `kirby plugin:install wottpal/kirby-lightbox-gallery`
 
 
-<small>
 Oldschool: Download this repo and move the folder to `site/plugins/`.
-</small>
+
 
 ### 2. Download Photoswipe
 Download [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases) (tested version 4.1.2) rename the `dist` directory to `photoswipe` and place it under `assets/vendor/`.
 
-<small>
 Note: Additionally you should minify the two `.css` files of PhotoSwipe which is weirdly not done by them. I love to use [Squeezer](https://squeezerapp.com/) for macOS for that. In the next section I'll assume that minified versions of these files exist.
-</small>
 
-### 2. Link Resources
+
+### 3. Link Resources
 
 Embed necessary styles within your `<head>`:
 
@@ -92,9 +90,7 @@ The following options can be set globally in your `config.php` with `c::set($key
 
 *The preset which is used to generate the gallery-thumbs. See [ImageSet](https://github.com/fabianmichael/kirby-imageset)-documentation for more infos.*
 
-<small>
 Note: I use `'400x400-1000x1000, 4'` to generate responsive square images.
-</small>
 
 *****
 
@@ -114,25 +110,21 @@ Note: I use `'400x400-1000x1000, 4'` to generate responsive square images.
 
 *Maximum amount of previewed images to be shown.*
 
-<small>
+
 Note: The hidden items are only *visually hidden* with CSS. By appending a `data-not-previewed` attribute to the `<figure>` elements.
-</small>
+
 
 *****
 
 * `lightboxgallery.cols` (default: `['min' => 3, 'max' => 4]`)
 * `lightboxgallery.mobilecols` (default: `['min' => 2, 'max' => 2]`)
 
-Defines the range of possible columns the gallery can choose of. Within this range an algorithm 🔮 tries to find the best match in terms of minimizing row-count and overhang with the given amount of thumbs.
+*Defines the range of possible columns the gallery can choose of. Within this range an algorithm 🔮 tries to find the best match in terms of minimizing row-count and overhang with the given amount of thumbs.*
 
-
-<small>
 Note 1: The actual implementation is located under `helpers.php`.
-</small>
 
-<small>
 Note 2: The mobile-breakpoint and gutter-width are currently defined in `src_assets/gallery.scss`. You can overwrite it by setting a `lightboxgallery.class` and adding your own styles or completely substituting the plugins CSS with your own stylesheets.
-</small>
+
 
 
 *****
