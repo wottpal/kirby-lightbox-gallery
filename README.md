@@ -33,7 +33,7 @@ Oldschool: Download this repo and move the folder to `site/plugins/`.
 Download [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases) (tested version 4.1.2) rename the `dist` directory to `photoswipe` and place it under `assets/vendor/`.
 
 <small>
-Note: Additionally you should minify the two `.css` files of PhotoSwipe which is weirdly not done by them. I love to use [Squeezer](https://squeezerapp.com) (macOS) for that. In the next section I'll assume that minified versions of these files exist.
+Note: Additionally you should minify the two `.css` files of PhotoSwipe which is weirdly not done by them. I love to use [Squeezer](https://squeezerapp.com/) for macOS for that. In the next section I'll assume that minified versions of these files exist.
 </small>
 
 ### 2. Link Resources
