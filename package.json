@@ -1,0 +1,11 @@
+{
+ "name": "lightbox-gallery",
+ "description": "Adds a kirbytag for a lightbox-gallery powered by PhotoSwipe.",
+ "author": "Dennis Kerzig <hi@wottpal.com> (https://wottpal.com)",
+ "version": "0.0.1",
+ "type": "kirby-plugin",
+ "license": "MIT",
+ "devDependencies": {
+  "babel-preset-es2015": "^6.24.0"
+ }
+}

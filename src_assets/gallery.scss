@@ -1,0 +1,98 @@
+/**
+ * This is the default-styling for the lightbox-gallery.
+ * It features dynamic & responsive grid-sizing and a show-more indicator.
+ *
+ * If you want to customize it, just copy & paste it into your 'assets/'-folder
+ * and replace the style-references in your <head>.
+ */
+
+
+/* Helpers */
+
+// Visually hides an element but still accessible
+@mixin visually-hidden() {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+}
+
+// Sets a percentual width subtracted by the margin
+@mixin klg-item-width($cols, $margin: $klg-gallery-gutter) {
+  $percent: 100% / $cols;
+
+  width: calc(#{$percent} - #{$margin});
+}
+
+
+/* Variables */
+
+$klg-gallery-gutter: 1rem;
+$klg-mobile-breakpoint: 40rem;
+
+/* Gallery */
+[data-js='photoswipe-gallery'] {
+  display: flex;
+
+  margin: - 1 / 2 * $klg-gallery-gutter;
+  padding: 1rem 0;
+
+  flex-wrap: wrap;
+}
+
+
+/* Gallery-Element */
+[data-js='photoswipe-gallery'] figure {
+  position: relative;
+
+  margin: $klg-gallery-gutter / 2;
+
+  &,
+  .imageset {
+    cursor: zoom-in;
+  }
+
+  // Hide Caption
+  figcaption {
+    @include visually-hidden();
+  }
+
+  // Column-Sizing
+  @for $n from 1 through 10 {
+    &.klg-cols-#{$n} {
+      @include klg-item-width($n);
+    }
+  }
+  @media (max-width: $klg-mobile-breakpoint) {
+    @for $n from 1 through 10 {
+      &.klg-mobilecols-#{$n} {
+        @include klg-item-width($n);
+      }
+    }
+  }
+
+  // Hide Elements visually which does not have a preview
+  &[data-not-previewed] {
+    @include visually-hidden();
+  }
+
+  // Show indicator if there are more images but hidden
+  &[data-last-previewed]:not([data-more-count='0']):after {
+    content: attr(data-more-count) ' more..';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(white, 1);
+    background: rgba(black, .75);
+  }
+}
