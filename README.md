@@ -13,7 +13,7 @@ A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the edito
 
 In the meantime you can watch this very satisfying GIF.
 
-![Demo of Kirby Lightbox-Gallery](http://i.imgur.com/uYz7P5d.gif)
+![Demo of Kirby Lightbox-Gallery](demo.gif)
 
 
 # 🤸 Installation
