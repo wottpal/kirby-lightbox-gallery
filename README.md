@@ -22,10 +22,11 @@ Because of the PhotoSwipe dependency multiple steps are necessary for a proper i
 ### 1. Install the plugin itself
 *Recommended*: Use [Kirby's CLI](https://github.com/getkirby/cli) and install the plugin via:
 
-`kirby plugin:install dkerzig/kirby-lightbox-gallery`
+`kirby plugin:install wottpal/kirby-lightbox-gallery`
+
 
 <small>
-Oldschool: Download this repo, rename it to `lightbox-gallery` and move the folder under `site/plugins/` in your Kirby installation.
+Oldschool: Download this repo and move the folder to `site/plugins/`.
 </small>
 
 ### 2. Download Photoswipe
@@ -146,18 +147,18 @@ Initial Release
 # 🏋️ Roadmap
 **Contributions welcome 😘**
 
-- [ ] Investigate more thinking into non-square images
+- [ ] Think more about non-square images
 - [ ] Dynamic ImageSet Preset based on column-count
-- [ ] Possibility to define thumb-sizes for the Non-ImageSet version
+- [ ] Possibility to define thumb-sizes for the Non-ImageSet version
 - [ ] Define responsive PhotoSwipe image-sources
-- [ ] Option to move stretched row to the end (only if `count % col != 0`)
-- [ ] Option to not stretch row and keep the same column-count (only if `count % col != 0`). But I think this only makes visually sense if it's moved to the end with the option before.
-- [ ] Option to disable lightbox usage
+- [ ] Option to move stretched row to the end (only if `count % col != 0`)
+- [ ] Option to not stretch row and keep the same column-count (only if `count % col != 0`). But I think this only makes visually sense if it's moved to the end with the option before.
+- [ ] Option to disable lightbox usage
 - [ ] Enable use of History-API of PhotoSwipe in init-photoswipe.js
-- [ ] Allow cols/mobilecols to be set in the kirbytag
-- [ ] Maybe a new breakpoint-based API for defining min/max cols like
-- [ ] Support for videos (esp. `webM` with `mp4` and `gif` fallbacks)
-- [ ] **Squashing Bugs**
+- [ ] Allow cols/mobilecols to be set in the kirbytag
+- [ ] Maybe a new breakpoint-based API for defining min/max cols like
+- [ ] Support for videos (esp. `webM` with `mp4` and `gif` fallbacks)
+- [ ] **Squashing Bugs**
 
 
 # 👨‍💻 Development
