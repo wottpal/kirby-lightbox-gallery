@@ -5,7 +5,7 @@
 *
 * @package   Kirby CMS
 * @author    Dennis Kerzig <hi@wottpal.com>
-* @version   0.0.1
+* @version   0.1.0
 */
 
 
