@@ -6,7 +6,7 @@ A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the edito
 * **Dynamic & responsive Grid-Alignment**
 * **Works with Kirby's built-in thumbnail class, [ImageSet](https://github.com/fabianmichael/kirby-imageset) by @fabianmichael and [Focus](https://github.com/flokosiol/kirby-focus) by @flokosiol**
 * **Powered by [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases) by @dimsemenov**
-* Parses `title` & `caption` image-fields directly into PhotoSwipe
+* **Parses `title` & `caption` image-fields directly into PhotoSwipe**
 * **Configurable & Customizable to it's core 🤘**
 
 
