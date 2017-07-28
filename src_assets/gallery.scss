@@ -11,13 +11,15 @@
 
 // Visually hides an element but still accessible
 @mixin visually-hidden() {
-    position: absolute !important;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px);
-    /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    width: 1px;
-    height: 1px;
+  position: absolute !important;
+
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+
+  width: 1px;
+  height: 1px;
 }
 
 // Sets a percentual width subtracted by the margin
@@ -48,7 +50,12 @@ $klg-mobile-breakpoint: 40rem;
 [data-js='photoswipe-gallery'] figure {
   position: relative;
 
+  width: 100%;  // fallback
   margin: $klg-gallery-gutter / 2;
+
+  img {
+    width: 100%;
+  }
 
   &,
   .imageset {

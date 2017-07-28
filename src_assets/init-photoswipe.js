@@ -124,7 +124,7 @@ const initPhotoswipe = (() => {
 
     // Open PhotoSwipe if valid index was found
     const clickedGallery = combineGalleries ? galleryEls[0] : clickedListItem.parentNode
-    openPhotoSwipe(itemIndex, clickedGallery)
+    openPhotoSwipe(itemIndex, clickedGallery, true)
     return false
   };
 
@@ -169,6 +169,7 @@ const initPhotoswipe = (() => {
     }
 
     if (disableAnimation) {
+      options.hideAnimationDuration = 0
       options.showAnimationDuration = 0
     }
 

@@ -1,9 +1,12 @@
 # Lightbox-Gallery for Kirby
+![](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
+
 A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the editor to easily inline beautiful galleries with lightbox-support. By [@wottpal](https://twitter.com/wottpal).
 
 * **Dynamic & responsive Grid-Alignment**
-* **Works with responsive & lazy-loading images by supporting [ImageSet](https://github.com/fabianmichael/kirby-imageset) & [ImageKit](https://github.com/fabianmichael/kirby-imagekit) by @fabianmichael**
+* **Works with Kirby's built-in thumbnail class, [ImageSet](https://github.com/fabianmichael/kirby-imageset) by @fabianmichael and [Focus](https://github.com/flokosiol/kirby-focus) by @flokosiol**
 * **Powered by [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases) by @dimsemenov**
+* Parses `title` & `caption` image-fields directly into PhotoSwipe
 * **Configurable & Customizable to it's core 🤘**
 
 
@@ -17,12 +20,12 @@ In the meantime you can watch this very satisfying GIF.
 
 
 # 🤸 Installation
-Because of the PhotoSwipe dependency multiple steps are necessary for a proper installation of the plugin. If you have any questions feel free to [reach out](https://twitter.com/wottpal) or file an issue.
+Because of the PhotoSwipe dependency multiple steps are necessary for a proper installation of the plugin. Also **PHP 5.6+** is required. If you have any questions feel free to [reach out](https://twitter.com/wottpal) or file an issue.
+
+
 
 ### 1. Install the plugin itself
-*Recommended*: Use [Kirby's CLI](https://github.com/getkirby/cli) and install the plugin via:
-
-`kirby plugin:install wottpal/kirby-lightbox-gallery`
+*Recommended*: Use [Kirby's CLI](https://github.com/getkirby/cli) and install the plugin via: `kirby plugin:install wottpal/kirby-lightbox-gallery`
 
 
 Oldschool: Download this repo and move the folder to `site/plugins/`.
@@ -64,11 +67,12 @@ Except the PhotoSwipe Base CSS & JS you can literally replace every dependency w
 
 ```
 (gallery: 1.png 2.png 3.png 4.png)
-(gallery: 1.png 2.png 3.png 4.png max: 2)
+(gallery: 1.png 2.png 3.png 4.png limit: 2)
 ```
 
 
 # 🤺 Options
+
 The following options can be set globally in your `config.php` with `c::set($key, $value = null)`. You can also set multiple keys with `c::set([$key => $value, ..])`. 🤓
 
 *****
@@ -77,20 +81,6 @@ The following options can be set globally in your `config.php` with `c::set($key
 
 *The name of the tag to use this gallery within kirbytext. Like `(gallery: ...)`.*
 
-*****
-
-* `lightboxgallery.imageset` (default: `false`)
-
-*Set this to `true` **and** define a `thumb.preset` (next option) to enable [ImageSet](https://github.com/fabianmichael/kirby-imageset)-support*
-
-
-*****
-
-* `lightboxgallery.imageset.thumb.preset` (no default)
-
-*The preset which is used to generate the gallery-thumbs. See [ImageSet](https://github.com/fabianmichael/kirby-imageset)-documentation for more infos.*
-
-Note: I use `'400x400-1000x1000, 4'` to generate responsive square images.
 
 *****
 
@@ -106,9 +96,9 @@ Note: I use `'400x400-1000x1000, 4'` to generate responsive square images.
 
 *****
 
-* `lightboxgallery.max.preview` (default: `false`)
+* `lightboxgallery.limit` (default: `false`)
 
-*Maximum amount of previewed images to be shown.*
+*Maximum amount of previewed thumbnails to be shown.*
 
 
 Note: The hidden items are only *visually hidden* with CSS. By appending a `data-not-previewed` attribute to the `<figure>` elements.
@@ -126,25 +116,55 @@ Note 1: The actual implementation is located under `helpers.php`.
 Note 2: The mobile-breakpoint and gutter-width are currently defined in `src_assets/gallery.scss`. You can overwrite it by setting a `lightboxgallery.class` and adding your own styles or completely substituting the plugins CSS with your own stylesheets.
 
 
+*****
+
+* `lightboxgallery.stretch` (default: `true`)
+* `lightboxgallery.stretch.last` (default: `false`)
+
+*If there are not enough images to fill all rows with as many items as columns by default the images in the first row are stretched to fill up the whole width. You can move this stretched row to the end if you set `stretch.last` to `true` or completely disable this behavior by setting `stretch` to `false`.*
+
+Note: If you set `stretch` to `false` the value for `stretch.last` is ignored and the not-filled row is always at the end.
+
 
 *****
+
+* `lightboxgallery.thumb.provider` (default: `'thumb'`)
+
+*Choose from one of the following providers for thumb-creation:*
+  * `'thumb'` ([Kirby's built-in thumbnail class](https://getkirby.com/docs/templates/thumbnails))
+  * `'focus'` ([Kirby-Focus](https://github.com/flokosiol/kirby-focus) by [@flokosiol](https://twitter.com/flokosiol))
+  * `'imageset'` ([ImageSet](https://github.com/fabianmichael/kirby-imageset))
+  * `false` (just use the image as thumb)
+
+Note: Because thumbnail-creation for a whole gallery may take some time and you don't want the first visitor of your site to suffer I recommend you to have a look into [ImageKit](https://github.com/fabianmichael/kirby-imagekit).
+
+*****
+
+* `lightboxgallery.thumb.options` (default: `["width" => 800, "height" => 800, "crop" => true]`)
+
+*Define the options for the selected `thumb.provider`. Works exactly the same way as you would use the options with their respective functions. If you set the `thumb.provider` to something else than `'thumb'` or `false` you **must** set this option.*
+
+Note 1: The default-value is crops 800x800 thumbnails with Kirby's built-in thumbnail class.
+
+Note 2: If you use `focus` put all values in an array. So for example if you set it to `[300,300]` the plugin will call `focusCrop(300,300)`.
+
+Note 3: If you use `imageset` you set this option to something like `['400x400-1000x1000, 4']` to generate responsive square images. (You should specify `sizes` as well).
 
 
 # 🏄 Changelog
 
-#### 0.1.0
-Initial Release
+Have a look at the [releases page](https://github.com/wottpal/kirby-lightbox-gallery/releases).
 
 
 # 🏋️ Roadmap
 **Contributions welcome 😘**
 
+- [x] Possibility to define thumb-sizes for the Non-ImageSet version
+- [x] Option to move stretched row to the end (only if `count % col != 0`)
+- [x] Option to not stretch row and keep the same column-count (only if `count % col != 0`).
 - [ ] Think more about non-square images
-- [ ] Dynamic ImageSet Preset based on column-count
-- [ ] Possibility to define thumb-sizes for the Non-ImageSet version
-- [ ] Define responsive PhotoSwipe image-sources
-- [ ] Option to move stretched row to the end (only if `count % col != 0`)
-- [ ] Option to not stretch row and keep the same column-count (only if `count % col != 0`). But I think this only makes visually sense if it's moved to the end with the option before.
+- [ ] Dynamic thumb-options based on column-count
+- [ ] Define responsive image-sources for PhotoSwipe
 - [ ] Option to disable lightbox usage
 - [ ] Enable use of History-API of PhotoSwipe in init-photoswipe.js
 - [ ] Allow cols/mobilecols to be set in the kirbytag
@@ -163,9 +183,9 @@ npm i
 # Or: Install Dependencies for Hipsters
 yarn
 
-# Build & Watch
-gulp
+# Build & Watch (Install 'gulp-cli' globally to omit the 'npx')
+npx gulp
 ```
 
 # 💰‍ Pricing
-Just kidding. This plugin is totally free. Please consider following [me](https://twitter.com/wottpal) on Twitter if it made your day.
+Just kidding. This plugin is totally free. Please consider following [me](https://twitter.com/wottpal) on Twitter if it saved your day.
