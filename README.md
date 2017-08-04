@@ -196,7 +196,7 @@ npx gulp
 ```
 
 # 💰‍ Pricing
-Just kidding. This plugin is totally free. Please consider following me on Twitter if it saved your day.
+Just kidding. This plugin is totally free. Please consider following [me](https://twitter.com/wottpal) on Twitter if it saved your day.
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/wottpal.svg?style=social&label=Follow)]()
 
