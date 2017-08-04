@@ -1,7 +1,12 @@
-# Lightbox-Gallery for Kirby
-![](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
+# 🖼 Kirby Lightbox-Gallery by [@wottpal](https://twitter.com/wottpal)
 
-A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the editor to easily inline beautiful galleries with lightbox-support. By [@wottpal](https://twitter.com/wottpal).
+<!-- Buttons --> ![Release](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
+[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wottpal/kirby-lightbox-gallery/master/LICENSE)
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/wottpal/kirby-lightbox-gallery.svg?style=social)](https://twitter.com/intent/tweet?text=🖼 Lightbox-Gallery for @getkirby by @wottpal&url=https://git.io/v7ajs)
+
+(_Disclaimer:_ This is a pre-release.)
+
+A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the editor to easily inline beautiful galleries with lightbox-support.
 
 * **Dynamic & responsive Grid-Alignment**
 * **Works with Kirby's built-in thumbnail class, [ImageSet](https://github.com/fabianmichael/kirby-imageset) by @fabianmichael and [Focus](https://github.com/flokosiol/kirby-focus) by @flokosiol**
@@ -10,7 +15,7 @@ A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the edito
 * **Configurable & Customizable to it's core 🤘**
 
 
-## 🤹‍ Demos
+# 🤹‍ Demos
 
 *Coming Soon* ([submit your demo](https://twitter.com/wottpal))
 
@@ -43,7 +48,7 @@ Embed necessary styles within your `<head>`:
 
 ```
 <?= css([
-  'assets/plugins/lightbox-gallery/gallery.min.scss',
+  'assets/plugins/lightbox-gallery/gallery.min.css',
   'assets/vendor/photoswipe/photoswipe.min.css',
   'assets/vendor/photoswipe/default-skin/default-skin.min.css'
   ]) ?>
@@ -59,7 +64,7 @@ Embed necessary scripts before the end of your `</body>`:
 ]) ?>
 ```
 
-### Customization
+#### Customization
 Except the PhotoSwipe Base CSS & JS you can literally replace every dependency with your own code. A good start for this is to copy & paste the original dependency (e.g. `'site/plugins/lightbox-gallery/src_assets/init-photoswipe.js'`) into your own assets folder, do your modifications and change the asset-paths accordingly. But be aware that the plugin changes over time and you may have to keep your changes compatible.
 
 
@@ -150,6 +155,8 @@ Note 2: If you use `focus` put all values in an array. So for example if you set
 
 Note 3: If you use `imageset` you set this option to something like `['400x400-1000x1000, 4']` to generate responsive square images. (You should specify `sizes` as well).
 
+*****
+
 
 # 🏄 Changelog
 
@@ -170,7 +177,6 @@ Have a look at the [releases page](https://github.com/wottpal/kirby-lightbox-gal
 - [ ] Allow cols/mobilecols to be set in the kirbytag
 - [ ] Maybe a new breakpoint-based API for defining min/max cols like
 - [ ] Support for videos (esp. `webM` with `mp4` and `gif` fallbacks)
-- [ ] **Squashing Bugs**
 
 
 # 👨‍💻 Development
@@ -188,4 +194,11 @@ npx gulp
 ```
 
 # 💰‍ Pricing
-Just kidding. This plugin is totally free. Please consider following [me](https://twitter.com/wottpal) on Twitter if it saved your day.
+Just kidding. This plugin is totally free. Please consider following me on Twitter if it saved your day.
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/wottpal.svg?style=social&label=Follow)]()
+
+You can also check out one of my other Kirby-plugins:
+
+* [HTML5-Video Kirbytag](https://github.com/wottpal/kirby-video) - Adds a kirbytag for embedding HTML5-videos with a variety of features.
+* [Anchor-Headings](https://github.com/wottpal/kirby-anchor-headings) - A kirby field-method which enumerates heading-elements, generates IDs for anchor-links and inserts custom markup based on your needs.
