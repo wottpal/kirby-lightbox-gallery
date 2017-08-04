@@ -3,7 +3,8 @@
 <!-- Buttons -->
 ![Release](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wottpal/kirby-lightbox-gallery/master/LICENSE)
-[![Tweet](https://img.shields.io/twitter/url/https/github.com/wottpal/kirby-lightbox-gallery.svg?style=social)](https://twitter.com/intent/tweet?text=🖼 Lightbox-Gallery for @getkirby by @wottpal&url=https://git.io/v7ajs)
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/wottpal/kirby-lightbox-gallery.svg?style=social)](&#x1F5BC;&#x20;&#x4C;&#x69;&#x67;&#x68;&#x74;&#x62;&#x6F;&#x78;&#x2D;&#x47;&#x61;&#x6C;&#x6C;&#x65;&#x72;&#x79;&#x20;&#x66;&#x6F;&#x72;&#x20;&#x40;&#x67;&#x65;&#x74;&#x6B;&#x69;&#x72;&#x62;&#x79;&#x20;&#x62;&#x79;&#x20;&#x40;&#x77;&#x6F;&#x74;&#x74;&#x70;&#x61;&#x6C;)
+
 
 (_Disclaimer:_ This is a pre-release.)
 
