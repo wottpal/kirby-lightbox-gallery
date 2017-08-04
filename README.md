@@ -1,6 +1,7 @@
 # 🖼 Kirby Lightbox-Gallery by [@wottpal](https://twitter.com/wottpal)
 
-<!-- Buttons --> ![Release](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
+<!-- Buttons -->
+![Release](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wottpal/kirby-lightbox-gallery/master/LICENSE)
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/wottpal/kirby-lightbox-gallery.svg?style=social)](https://twitter.com/intent/tweet?text=🖼 Lightbox-Gallery for @getkirby by @wottpal&url=https://git.io/v7ajs)
 
