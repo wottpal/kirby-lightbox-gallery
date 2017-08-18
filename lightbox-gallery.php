@@ -26,8 +26,11 @@ $kirby->set('tag', $tagname, [
     $id = $tag->attr('id', c::get('lightboxgallery.id', ''));
     $combine = c::get('lightboxgallery.combine', false);
     $limit = $tag->attr('limit', c::get('lightboxgallery.limit', false));
-    $stretch = json_decode($tag->attr('stretch', c::get('lightboxgallery.stretch', true)));
-    $stretch_last = c::get('lightboxgallery.stretch.last', false);
+
+    // Determine Stretch-Properties
+    $stretch = strtolower($tag->attr('stretch', c::get('lightboxgallery.stretch', 'first')));
+    $stretch_last = $stretch === 'last';
+    $stretch = $stretch === 'last' || $stretch === 'first';
 
     // Columns-Definition (get it from config or as tag-attribute)
     $cols = c::get('lightboxgallery.cols', ['min' => 3, 'max' => 4]);

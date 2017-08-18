@@ -83,7 +83,8 @@ Except the PhotoSwipe Base CSS & JS you can literally replace every dependency w
 (gallery: all cols: 3)  # Sets cols to ['min' => 3, 'max' => 3]
 (gallery: all mobilecols: 1 2)  # Sets mobilecols to ['min' => 1, 'max' => 2]
 
-(gallery: all stretch: false)  # Disable stretching if count % columns != 0
+(gallery: all stretch: last)  # Stretch trailing items instead of first
+(gallery: all stretch: none)  # Disable stretching
 
 (gallery: all class: my-class id: my-id)  # Applied a class & id to the gallery-wrapper
 ```
@@ -139,12 +140,9 @@ Note 2: The mobile-breakpoint and gutter-width are currently defined in `src_ass
 
 *****
 
-* `lightboxgallery.stretch` (default: `true`)
-* `lightboxgallery.stretch.last` (default: `false`)
+* `lightboxgallery.stretch` (default: `'first'`)
 
-*If there are not enough images to fill all rows with as many items as columns by default the images in the first row are stretched to fill up the whole width. You can move this stretched row to the end if you set `stretch.last` to `true` or completely disable this behavior by setting `stretch` to `false`.*
-
-Note: If you set `stretch` to `false` the value for `stretch.last` is ignored and the not-filled row is always at the end.
+*If there are not enough images to fill all rows with as many items as columns by default the images in the first row are stretched to fill up the whole width. You can set this option to `'last'` to stretch all trailing items instead or set it to `'none'` to disable stretching at all.
 
 
 *****
