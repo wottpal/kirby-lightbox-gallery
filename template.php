@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . DS . 'helpers.php'; ?>
 
 
-<div class="<?= $class ?>" data-js="photoswipe-gallery" itemscope itemtype="http://schema.org/ImageGallery" <?php e($combine, 'combine-galleries="true"') ?>>
+<div id="<?=$id ?>" class="<?= $class ?>" data-js="photoswipe-gallery" itemscope itemtype="http://schema.org/ImageGallery" <?php e($combine, 'combine-galleries="true"') ?>>
 
   <!-- All images as <figure> elements -->
   <?php foreach($images as $idx => $image): ?>

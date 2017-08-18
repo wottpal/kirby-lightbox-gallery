@@ -5,6 +5,23 @@
 
 
 /**
+* This function returns true if the given string is a valid columns-definition.
+* It must contain exactly two int values.
+*/
+function columnsStringIsValid($cols_string) {
+  if (!$cols_string) return false;
+  $cols = str::split(trim($cols_string), ' ');
+
+  if (!$cols || !is_array($cols) || count($cols) !== 2) return false;
+  foreach ($cols as $val) {
+    if (!is_int($val)) return false;
+  }
+
+  return $cols;
+}
+
+
+/**
 * This function calculates a nice column-count for the given images-count within
 * the given ['$min', '$max'] range.
 *
