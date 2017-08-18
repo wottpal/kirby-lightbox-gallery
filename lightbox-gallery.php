@@ -5,7 +5,7 @@
 *
 * @package   Kirby CMS
 * @author    Dennis Kerzig <hi@wottpal.com>
-* @version   0.2.0
+* @version   0.3.0
 */
 
 
@@ -18,36 +18,31 @@ $tagname = c::get('lightboxgallery.kirbytext.tagname', 'gallery');
 
 
 $kirby->set('tag', $tagname, [
-  'attr' => [
-    'limit',
-    'id',
-    'class',
-    'page'
-  ],
-  'html' => function($tag) use ($tagname) {
+  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page' ],
 
+  'html' => function($tag) use ($tagname) {
     // Options
     $class = $tag->attr('class', c::get('lightboxgallery.class', ''));
     $id = $tag->attr('id', c::get('lightboxgallery.id', ''));
     $combine = c::get('lightboxgallery.combine', false);
     $limit = $tag->attr('limit', c::get('lightboxgallery.limit', false));
-    $stretch = c::get('lightboxgallery.stretch', true);
+    $stretch = json_decode($tag->attr('stretch', c::get('lightboxgallery.stretch', true)));
     $stretch_last = c::get('lightboxgallery.stretch.last', false);
 
     // Columns-Definition (get it from config or as tag-attribute)
     $cols = c::get('lightboxgallery.cols', ['min' => 3, 'max' => 4]);
-    $cols_attr = columnsStringIsValid($tag->attr('cols', false));
+    $cols_attr = columnsFromString($tag->attr('cols', false));
     if ($cols_attr) $cols = $cols_attr;
 
     $mobilecols = c::get('lightboxgallery.mobilecols', ['min' => 2, 'max' => 2]);
-    $mobilecols_attr = columnsStringIsValid($tag->attr('mobilecols', false));
+    $mobilecols_attr = columnsFromString($tag->attr('mobilecols', false));
     if ($mobilecols_attr) $mobilecols = $mobilecols_attr;
 
     // Allow other pages as file-source (esp. for the `kirbytag` function)
-    $file_source = $tag;
+    $source = $tag->page();
     $custom_page = $tag->attr('page', false);
     if ($custom_page) $custom_page = page($custom_page);
-    if ($custom_page) $file_source = $custom_page;
+    if ($custom_page) $source = $custom_page;
 
     // Thumb-Options
     $thumb_provider = strtolower(c::get('lightboxgallery.thumb.provider', 'thumb'));
@@ -64,10 +59,13 @@ $kirby->set('tag', $tagname, [
     }
 
     // Gather Images
-    $images = str::split($tag->attr($tagname), ' ');
+    $images_string = $tag->attr($tagname);
+    $use_all = strtolower(trim($images_string)) === 'all';
+    $images_string = str::split($images_string, ' ');
+    $images = $use_all ? $source->images()->keys() : $images_string;
     $image_files = [];
     foreach ($images as $image) {
-      $image_file = $file_source->file(trim($image));
+      $image_file = $source->file(trim($image));
       if ($image_file) array_push($image_files, $image_file);
     }
 

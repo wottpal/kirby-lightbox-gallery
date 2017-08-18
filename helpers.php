@@ -8,16 +8,15 @@
 * This function returns true if the given string is a valid columns-definition.
 * It must contain exactly two int values.
 */
-function columnsStringIsValid($cols_string) {
-  if (!$cols_string) return false;
-  $cols = str::split(trim($cols_string), ' ');
+function columnsFromString($cols_string) {
+  $cols = explode(' ', trim($cols_string));
+  if (count($cols) < 1 || intval($cols[0]) === 0) return false;
 
-  if (!$cols || !is_array($cols) || count($cols) !== 2) return false;
-  foreach ($cols as $val) {
-    if (!is_int($val)) return false;
+  if (count($cols) === 1 || intval($cols[1]) === 0) {
+    return [ 'min' => intval($cols[0]), 'max' => intval($cols[0]) ];
   }
 
-  return $cols;
+  return [ 'min' => intval($cols[0]), 'max' => intval($cols[1]) ];
 }
 
 
@@ -29,8 +28,8 @@ function columnsStringIsValid($cols_string) {
 *   (1) amount of rows,
 *   (2) amount-difference of images in first/last row
 */
-function columns($min, $max, $count) {
-  if ($count < $min) return $count;
+function columns($min, $max, $stretch, $count) {
+  if ($stretch && $count < $min) return $count;
 
   // Find column-width with least amount of rows & diff
   $least_rows = PHP_INT_MAX;
@@ -57,7 +56,7 @@ function columns($min, $max, $count) {
 * stretched to fill the full width even with less items than columns.
 */
 function columnClass($prefix, $min, $max, $stretch, $stretch_last, $count, $i) {
-  $cols = columns($min, $max, $count);
+  $cols = columns($min, $max, $stretch, $count);
 
   // If stretching is enabled stretch items in either the first / last row
   $diff = $cols - ($count % $cols);

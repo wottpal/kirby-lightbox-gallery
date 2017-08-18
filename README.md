@@ -48,7 +48,7 @@ Note: Additionally you should minify the two `.css` files of PhotoSwipe which is
 
 Embed necessary styles within your `<head>`:
 
-```
+```php
 <?= css([
   'assets/plugins/lightbox-gallery/gallery.min.css',
   'assets/vendor/photoswipe/photoswipe.min.css',
@@ -58,7 +58,7 @@ Embed necessary styles within your `<head>`:
 
 Embed necessary scripts before the end of your `</body>`:
 
-```
+```php
 <?= js([
   'assets/vendor/photoswipe/photoswipe.min.js',
   'assets/vendor/photoswipe/photoswipe-ui-default.min.js',
@@ -70,12 +70,25 @@ Embed necessary scripts before the end of your `</body>`:
 Except the PhotoSwipe Base CSS & JS you can literally replace every dependency with your own code. A good start for this is to copy & paste the original dependency (e.g. `'site/plugins/lightbox-gallery/src_assets/init-photoswipe.js'`) into your own assets folder, do your modifications and change the asset-paths accordingly. But be aware that the plugin changes over time and you may have to keep your changes compatible.
 
 
-# 🏊 Usage
+# 🏊 Usage Examples
 
+```bash
+(gallery: all)  # Includes all images of the page
+(gallery: 1.png 2.png 3.png)  # Includes only selected images
+(gallery: all page: projects/a)  # Includes all images of the page with the given uri
+
+(gallery: all limit: 2)  # Only shows thumbs of the first two images
+
+(gallery: all cols: 2 4)  # Sets cols to ['min' => 2, 'max' => 4]
+(gallery: all cols: 3)  # Sets cols to ['min' => 3, 'max' => 3]
+(gallery: all mobilecols: 1 2)  # Sets mobilecols to ['min' => 1, 'max' => 2]
+
+(gallery: all stretch: false)  # Disable stretching if count % columns != 0
+
+(gallery: all class: my-class id: my-id)  # Applied a class & id to the gallery-wrapper
 ```
-(gallery: 1.png 2.png 3.png 4.png)
-(gallery: 1.png 2.png 3.png 4.png limit: 2)
-```
+
+Please see the following section for further description how the particular parameters work. Options set in a Kirbytag *always* overwrite global options.
 
 
 # 🤺 Options
@@ -91,9 +104,10 @@ The following options can be set globally in your `config.php` with `c::set($key
 
 *****
 
+* `lightboxgallery.id` (default: `''`)
 * `lightboxgallery.class` (default: `''`)
 
-*Additional class which is added to all gallery-elements. Use it for custom styling.*
+*Specify an ID or class which is added to the gallery-wrapper element. Use it for custom styling.*
 
 *****
 
@@ -171,12 +185,12 @@ Have a look at the [releases page](https://github.com/wottpal/kirby-lightbox-gal
 - [x] Possibility to define thumb-sizes for the Non-ImageSet version
 - [x] Option to move stretched row to the end (only if `count % col != 0`)
 - [x] Option to not stretch row and keep the same column-count (only if `count % col != 0`).
+- [x] Allow cols/mobilecols to be set in the kirbytag
 - [ ] Think more about non-square images
 - [ ] Dynamic thumb-options based on column-count
 - [ ] Define responsive image-sources for PhotoSwipe
 - [ ] Option to disable lightbox usage
 - [ ] Enable use of History-API of PhotoSwipe in init-photoswipe.js
-- [ ] Allow cols/mobilecols to be set in the kirbytag
 - [ ] Maybe a new breakpoint-based API for defining min/max cols like
 - [ ] Support for videos (esp. `webM` with `mp4` and `gif` fallbacks)
 
@@ -184,7 +198,7 @@ Have a look at the [releases page](https://github.com/wottpal/kirby-lightbox-gal
 # 👨‍💻 Development
 For minification and transpilation I use [Gulp](http://gulpjs.com). Please note that all files under `assets/` are only the generated ones from `src_assets/`.
 
-```
+```bash
 # Install Dependencies
 npm i
 
