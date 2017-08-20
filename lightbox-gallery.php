@@ -18,7 +18,7 @@ $tagname = c::get('lightboxgallery.kirbytext.tagname', 'gallery');
 
 
 $kirby->set('tag', $tagname, [
-  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page' ],
+  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page', 'order' ],
 
   'html' => function($tag) use ($tagname) {
     // Options
@@ -71,6 +71,11 @@ $kirby->set('tag', $tagname, [
       $image_file = $source->file(trim($image));
       if ($image_file) array_push($image_files, $image_file);
     }
+
+    // Order Images
+    $order = strtolower($tag->attr('order', 'default'));
+    if ($order === 'reverse') $image_files = array_reverse($image_files);
+    if ($order === 'random' || $order === 'shuffle') shuffle($image_files);
 
     // Determine Count of displayed Thumbnails
     $use_limit = $limit && $limit < count($image_files);

@@ -62,7 +62,7 @@ function columnClass($prefix, $min, $max, $stretch, $stretch_last, $count, $i) {
   $diff = $cols - ($count % $cols);
   if ($stretch && $diff != 0) {
     $stretch_first_now = !$stretch_last && ($i < ($cols - $diff));
-    $stretch_last_now = $stretch_last && ($i >= ($count - $diff - 1));
+    $stretch_last_now = $stretch_last && ($i >= ($count - ($cols - $diff) ));
     // Use larger columns if stretching applies for the given image
     if ($stretch_first_now || $stretch_last_now) {
       $cols = $cols - $diff;
