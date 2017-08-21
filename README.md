@@ -16,14 +16,13 @@ A plugin for the awesome [Kirby CMS](http://getkirby.com) which allows the edito
 * **Parses `title` & `caption` image-fields directly into PhotoSwipe**
 * **Configurable & Customizable to it's core 🤘**
 
+![Demo of Kirby Lightbox-Gallery](demo.gif)
+
 
 # 🤹‍ Demos
 
-*Coming Soon* ([submit your demo](https://twitter.com/wottpal))
-
-In the meantime you can watch this very satisfying GIF.
-
-![Demo of Kirby Lightbox-Gallery](demo.gif)
+* [wottpal.com](http://wottpal.com/items/kirby-lightbox-gallery) (my personal site)
+* **[Submit yours](https://twitter.com/wottpal)**
 
 
 # 🤸 Installation
@@ -78,6 +77,9 @@ Except the PhotoSwipe Base CSS & JS you can literally replace every dependency w
 (gallery: all page: projects/a)  # Includes all images of the page with the given uri
 
 (gallery: all limit: 2)  # Only shows thumbs of the first two images
+
+(gallery: all order: random)  # Shuffles all images
+(gallery: all order: reverse)  # Displays all images in reverse order
 
 (gallery: all cols: 2 4)  # Sets cols to ['min' => 2, 'max' => 4]
 (gallery: all cols: 3)  # Sets cols to ['min' => 3, 'max' => 3]
