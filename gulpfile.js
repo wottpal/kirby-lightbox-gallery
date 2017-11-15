@@ -37,7 +37,7 @@ gulp.task('styles', () => {
 gulp.task('scripts', () => {
   return gulp.src(src + '**/*.js')
   .pipe(babel({
-    "presets": ['es2015']
+    'presets': ['es2015']
   }).on('error', util.log))
   .pipe(uglify({
     output: {

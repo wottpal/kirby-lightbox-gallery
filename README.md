@@ -65,6 +65,9 @@ Embed necessary scripts before the end of your `</body>`:
 ]) ?>
 ```
 
+If you use the default initialization (`init-photoswipe.min.js`) and want to support older browsers you may need to add polyfills for the `forEach` and `Array.from` functions.
+
+
 #### Customization
 Except the PhotoSwipe Base CSS & JS you can literally replace every dependency with your own code. A good start for this is to copy & paste the original dependency (e.g. `'site/plugins/lightbox-gallery/src_assets/init-photoswipe.js'`) into your own assets folder, do your modifications and change the asset-paths accordingly. But be aware that the plugin changes over time and you may have to keep your changes compatible.
 

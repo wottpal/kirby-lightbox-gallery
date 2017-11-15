@@ -79,7 +79,7 @@ const initPhotoswipe = (() => {
 
     // Transform Links
     // This is necessary because multiple wrapped <a>'s are forbidden in HTML.
-    const linksToTransform = tmpEl.querySelectorAll('span[data-link]');
+    const linksToTransform = Array.from(tmpEl.querySelectorAll('span[data-link]'));
     linksToTransform.forEach(spanEl => {
       const link = spanEl.getAttribute('data-link').trim();
       if (!link || link == "") return;
