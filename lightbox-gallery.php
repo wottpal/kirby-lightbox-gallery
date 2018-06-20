@@ -17,7 +17,7 @@ $tagname = c::get('lightboxgallery.kirbytext.tagname', 'gallery');
 
 
 $kirby->set('tag', $tagname, [
-  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page', 'order' ],
+  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page', 'order', 'field'],
 
   'html' => function($tag) use ($tagname) {
     // Options
@@ -25,6 +25,9 @@ $kirby->set('tag', $tagname, [
     $id = $tag->attr('id', c::get('lightboxgallery.id', ''));
     $combine = c::get('lightboxgallery.combine', false);
     $limit = $tag->attr('limit', c::get('lightboxgallery.limit', false));
+
+    // Custom image field provider
+    $field = $tag->attr('field', c::get('lightboxgallery.field.provider', false));
 
     // Determine Stretch-Properties
     $stretch = strtolower($tag->attr('stretch', c::get('lightboxgallery.stretch', 'first')));
@@ -65,6 +68,7 @@ $kirby->set('tag', $tagname, [
     $use_all = strtolower(trim($images_string)) === 'all';
     $images_string = str::split($images_string, ' ');
     $images = $use_all ? $source->images()->keys() : $images_string;
+    if ($field !== false) $images = $source->{$field}()->yaml();
     $image_files = [];
     foreach ($images as $image) {
       $image_file = $source->file(trim($image));
