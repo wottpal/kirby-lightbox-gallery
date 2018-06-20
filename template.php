@@ -35,11 +35,13 @@
 
         <!-- Image-Title & -Caption -->
         <figcaption itemprop="caption description">
-          <?php if($image->title()->isNotEmpty()): ?>
-            <h1><?= $image->title() ?></h1>
-          <?php endif ?>
+          <?php if ($image->{$field_title}()->isNotEmpty()): ?>
+            <h1><?= $image->{$field_title}(); ?></h1>
+          <?php endif; ?>
 
-          <?= html::decode($image->caption()->kt()) ?>
+          <?php if ($image->{$field_caption}()->isNotEmpty()): ?>
+            <?= html::decode($image->{$field_caption}()->kt()); ?>
+          <?php endif; ?>
         </figcaption>
 
       </a>
