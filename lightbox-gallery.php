@@ -17,7 +17,7 @@ $tagname = c::get('lightboxgallery.kirbytext.tagname', 'gallery');
 
 
 $kirby->set('tag', $tagname, [
-  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page', 'order', 'field'],
+  'attr' => [ 'limit', 'stretch', 'cols', 'mobilecols', 'id', 'class', 'page', 'order' ],
 
   'html' => function($tag) use ($tagname) {
     // Options
@@ -25,7 +25,6 @@ $kirby->set('tag', $tagname, [
     $id = $tag->attr('id', c::get('lightboxgallery.id', ''));
     $combine = c::get('lightboxgallery.combine', false);
     $limit = $tag->attr('limit', c::get('lightboxgallery.limit', false));
-    $field = $tag->attr('field', c::get('lightboxgallery.field.provider', ''));    
 
     // Determine Stretch-Properties
     $stretch = strtolower($tag->attr('stretch', c::get('lightboxgallery.stretch', 'first')));
@@ -47,6 +46,7 @@ $kirby->set('tag', $tagname, [
     if ($custom_page) $custom_page = page($custom_page);
     if ($custom_page) $source = $custom_page;
 
+<<<<<<< HEAD
     // Title and caption field name options
     $field_title = strtolower(c::get('lightboxgallery.field.title', 'title'));
     $field_caption = strtolower(c::get('lightboxgallery.field.caption', 'caption'));
@@ -55,6 +55,8 @@ $kirby->set('tag', $tagname, [
     $dominant_color = c::get('lightboxgallery.field.dominantcolor', false);
     $dominant_color_name = c::get('lightboxgallery.field.dominantcolor.name', 'color');
 
+=======
+>>>>>>> Revert "Update plugin with field provider support and more"
     // Thumb-Options
     $thumb_provider = strtolower(c::get('lightboxgallery.thumb.provider', 'thumb'));
     $thumb_options = c::get('lightboxgallery.thumb.options', [
@@ -74,7 +76,6 @@ $kirby->set('tag', $tagname, [
     $use_all = strtolower(trim($images_string)) === 'all';
     $images_string = str::split($images_string, ' ');
     $images = $use_all ? $source->images()->keys() : $images_string;
-    if ($field !== '') $images = $source->{$field}()->yaml();
     $image_files = [];
     foreach ($images as $image) {
       $image_file = $source->file(trim($image));
@@ -99,8 +100,6 @@ $kirby->set('tag', $tagname, [
         'combine' => $combine,
         'thumb_provider' => $thumb_provider,
         'thumb_options' => $thumb_options,
-        'field_caption' => $field_caption,
-        'field_title' => $field_title,        
         'preview_count' => $preview_count,
         'cols' => $cols,
         'mobilecols' => $mobilecols,
