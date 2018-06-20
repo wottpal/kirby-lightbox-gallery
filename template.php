@@ -18,7 +18,7 @@
     $mobilecol_class = columnClass('klg-mobilecols-', $mobilecols['min'], $mobilecols['max'], $stretch, $stretch_last, $preview_count, $idx);
     ?>
 
-    <figure class="<?php e($cols, $col_class) ?> <?php e($mobilecols, $mobilecol_class) ?>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" data-count="<?= count($images) ?>" data-more-count="<?= count($images) - $idx - 1 ?>" <?php e($is_last_previewed, 'data-last-previewed') ?> <?php e($is_not_previewed, 'data-not-previewed') ?>>
+    <figure class="<?php e($cols, $col_class) ?> <?php e($mobilecols, $mobilecol_class) ?>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" data-count="<?= count($images) ?>" data-more-count="<?= count($images) - $idx - 1 ?>" <?php e($is_last_previewed, 'data-last-previewed') ?> <?php e($is_not_previewed, 'data-not-previewed') ?> <?= e($use_color, attr('styles', 'background-color:' . $image->{$field_color}())); ?>>
 
       <a href="<?= $image->url() ?>" data-image="<?= $image->url() ?>" data-size="<?= $dimensions ?>" itemprop="contentUrl">
 
