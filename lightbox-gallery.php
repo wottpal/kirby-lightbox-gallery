@@ -46,6 +46,17 @@ $kirby->set('tag', $tagname, [
     if ($custom_page) $custom_page = page($custom_page);
     if ($custom_page) $source = $custom_page;
 
+<<<<<<< HEAD
+    // Title and caption field name options
+    $field_title = strtolower(c::get('lightboxgallery.field.title', 'title'));
+    $field_caption = strtolower(c::get('lightboxgallery.field.caption', 'caption'));
+
+    // Dominant color option
+    $dominant_color = c::get('lightboxgallery.field.dominantcolor', false);
+    $dominant_color_name = c::get('lightboxgallery.field.dominantcolor.name', 'color');
+
+=======
+>>>>>>> Revert "Update plugin with field provider support and more"
     // Thumb-Options
     $thumb_provider = strtolower(c::get('lightboxgallery.thumb.provider', 'thumb'));
     $thumb_options = c::get('lightboxgallery.thumb.options', [
@@ -93,7 +104,9 @@ $kirby->set('tag', $tagname, [
         'cols' => $cols,
         'mobilecols' => $mobilecols,
         'stretch' => $stretch,
-        'stretch_last' => $stretch_last
+        'stretch_last' => $stretch_last,
+        'use_color' => $dominant_color,        
+        'field_color' => $dominant_color_name,
       ], true);
 
       return html($gallery);
