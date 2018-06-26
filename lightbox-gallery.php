@@ -49,6 +49,10 @@ $kirby->set('tag', $tagname, [
     // Title and caption field name options
     $field_title = strtolower(c::get('lightboxgallery.field.title', 'title'));
     $field_caption = strtolower(c::get('lightboxgallery.field.caption', 'caption'));
+    
+    // Dominant color option
+    $dominant_color = c::get('lightboxgallery.field.dominantcolor', false);
+    $dominant_color_name = c::get('lightboxgallery.field.dominantcolor.name', 'color');
 
     // Thumb-Options
     $thumb_provider = strtolower(c::get('lightboxgallery.thumb.provider', 'thumb'));
@@ -96,6 +100,8 @@ $kirby->set('tag', $tagname, [
         'thumb_provider' => $thumb_provider,
         'thumb_options' => $thumb_options,        
         'preview_count' => $preview_count,
+        'field_color' => $dominant_color_name,
+        'use_color' => $dominant_color,        
         'cols' => $cols,
         'mobilecols' => $mobilecols,
         'stretch' => $stretch,
