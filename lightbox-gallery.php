@@ -46,6 +46,10 @@ $kirby->set('tag', $tagname, [
     if ($custom_page) $custom_page = page($custom_page);
     if ($custom_page) $source = $custom_page;
 
+    // Title and caption field name options
+    $field_title = strtolower(c::get('lightboxgallery.field.title', 'title'));
+    $field_caption = strtolower(c::get('lightboxgallery.field.caption', 'caption'));
+    
     // Dominant color option
     $dominant_color = c::get('lightboxgallery.field.dominantcolor', false);
     $dominant_color_name = c::get('lightboxgallery.field.dominantcolor.name', 'color');
@@ -91,8 +95,10 @@ $kirby->set('tag', $tagname, [
         'id' => $id,
         'class' => $class,
         'combine' => $combine,
+        'field_caption' => $field_caption,
+        'field_title' => $field_title,        
         'thumb_provider' => $thumb_provider,
-        'thumb_options' => $thumb_options,
+        'thumb_options' => $thumb_options,        
         'preview_count' => $preview_count,
         'field_color' => $dominant_color_name,
         'use_color' => $dominant_color,        
