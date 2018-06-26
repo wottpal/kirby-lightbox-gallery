@@ -46,6 +46,10 @@ $kirby->set('tag', $tagname, [
     if ($custom_page) $custom_page = page($custom_page);
     if ($custom_page) $source = $custom_page;
 
+    // Dominant color option
+    $dominant_color = c::get('lightboxgallery.field.dominantcolor', false);
+    $dominant_color_name = c::get('lightboxgallery.field.dominantcolor.name', 'color');
+
     // Thumb-Options
     $thumb_provider = strtolower(c::get('lightboxgallery.thumb.provider', 'thumb'));
     $thumb_options = c::get('lightboxgallery.thumb.options', [
@@ -90,6 +94,8 @@ $kirby->set('tag', $tagname, [
         'thumb_provider' => $thumb_provider,
         'thumb_options' => $thumb_options,
         'preview_count' => $preview_count,
+        'field_color' => $dominant_color_name,
+        'use_color' => $dominant_color,        
         'cols' => $cols,
         'mobilecols' => $mobilecols,
         'stretch' => $stretch,
