@@ -4,6 +4,7 @@
 ![Release](https://img.shields.io/github/release/wottpal/kirby-lightbox-gallery/all.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wottpal/kirby-lightbox-gallery/master/LICENSE)
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/wottpal/kirby-lightbox-gallery.svg?style=social)](https://twitter.com/intent/tweet?text=&#x1F5BC;&#x20;&#x4C;&#x69;&#x67;&#x68;&#x74;&#x62;&#x6F;&#x78;&#x2D;&#x47;&#x61;&#x6C;&#x6C;&#x65;&#x72;&#x79;&#x20;&#x66;&#x6F;&#x72;&#x20;&#x40;&#x67;&#x65;&#x74;&#x6B;&#x69;&#x72;&#x62;&#x79;&#x20;&#x62;&#x79;&#x20;&#x40;&#x77;&#x6F;&#x74;&#x74;&#x70;&#x61;&#x6C;&url=https://git.io/v7ajs)
+ ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
 
 (_Disclaimer:_ This is a pre-release.)
@@ -38,7 +39,7 @@ Oldschool: Download this repo and move the folder to `site/plugins/`.
 
 
 ### 2. Download Photoswipe
-Download [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases) (tested version 4.1.2) rename the `dist` directory to `photoswipe` and place it under `assets/vendor/`.
+Download [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases) (tested version 4.1.3) rename the `dist` directory to `photoswipe` and place it under `assets/vendor/`.
 
 Note: Additionally you should minify the two `.css` files of PhotoSwipe which is weirdly not done by them. I love to use [Squeezer](https://squeezerapp.com/) for macOS for that. In the next section I'll assume that minified versions of these files exist.
 
@@ -49,7 +50,7 @@ Embed necessary styles within your `<head>`:
 
 ```php
 <?= css([
-  'assets/plugins/lightbox-gallery/gallery.min.css',
+  'media/plugins/wottpal/lightbox-gallery/gallery.min.css',
   'assets/vendor/photoswipe/photoswipe.min.css',
   'assets/vendor/photoswipe/default-skin/default-skin.min.css'
   ]) ?>
@@ -61,7 +62,7 @@ Embed necessary scripts before the end of your `</body>`:
 <?= js([
   'assets/vendor/photoswipe/photoswipe.min.js',
   'assets/vendor/photoswipe/photoswipe-ui-default.min.js',
-  'assets/plugins/lightbox-gallery/init-photoswipe.min.js'
+  'media/plugins/wottpal/lightbox-gallery/init-photoswipe.min.js'
 ]) ?>
 ```
 
@@ -99,31 +100,37 @@ Please see the following section for further description how the particular para
 
 # 🤺 Options
 
-The following options can be set globally in your `config.php` with `c::set($key, $value = null)`. You can also set multiple keys with `c::set([$key => $value, ..])`. 🤓
+The following options can be set globally in your `config.php` with `'wottpal.lightboxgallery.KEY' => 'VALUE'`. You can also set multiple keys with the example below. 🤓
+```bash
+'wottpal.lightboxgallery' => [
+  'KEY' => 'VALUE'
+]
+```
+
 
 *****
 
-* `lightboxgallery.kirbytext.tagname` (default: `'gallery'`)
+* `wottpal.lightboxgallery.kirbytext.tagname` (default: `'gallery'`)
 
 *The name of the tag to use this gallery within kirbytext. Like `(gallery: ...)`.*
 
 
 *****
 
-* `lightboxgallery.id` (default: `''`)
-* `lightboxgallery.class` (default: `''`)
+* `wottpal.lightboxgallery.id` (default: `''`)
+* `wottpal.lightboxgallery.class` (default: `''`)
 
 *Specify an ID or class which is added to the gallery-wrapper element. Use it for custom styling.*
 
 *****
 
-* `lightboxgallery.combine` (default: `false`)
+* `wottpal.lightboxgallery.combine` (default: `false`)
 
 *If set to `true` all galleries on one page will be virtually the same. So you can navigate between all images in the same lightbox.*
 
 *****
 
-* `lightboxgallery.limit` (default: `false`)
+* `wottpal.lightboxgallery.limit` (default: `false`)
 
 *Maximum amount of previewed thumbnails to be shown.*
 
@@ -133,8 +140,8 @@ Note: The hidden items are only *visually hidden* with CSS. By appending a `data
 
 *****
 
-* `lightboxgallery.cols` (default: `['min' => 3, 'max' => 4]`)
-* `lightboxgallery.mobilecols` (default: `['min' => 2, 'max' => 2]`)
+* `wottpal.lightboxgallery.cols` (default: `['min' => 3, 'max' => 4]`)
+* `wottpal.lightboxgallery.mobilecols` (default: `['min' => 2, 'max' => 2]`)
 
 *Defines the range of possible columns the gallery can choose of. Within this range an algorithm 🔮 tries to find the best match in terms of minimizing row-count and overhang with the given amount of thumbs.*
 
@@ -145,14 +152,14 @@ Note 2: The mobile-breakpoint and gutter-width are currently defined in `src_ass
 
 *****
 
-* `lightboxgallery.stretch` (default: `'first'`)
+* `wottpal.lightboxgallery.stretch` (default: `'first'`)
 
 *If there are not enough images to fill all rows with as many items as columns by default the images in the first row are stretched to fill up the whole width. You can set this option to `'last'` to stretch all trailing items instead or set it to `'none'` to disable stretching at all.
 
 
 *****
 
-* `lightboxgallery.thumb.provider` (default: `'thumb'`)
+* `wottpal.lightboxgallery.thumb.provider` (default: `'thumb'`)
 
 *Choose from one of the following providers for thumb-creation:*
   * `'thumb'` ([Kirby's built-in thumbnail class](https://getkirby.com/docs/templates/thumbnails))
@@ -164,7 +171,7 @@ Note: Because thumbnail-creation for a whole gallery may take some time and you 
 
 *****
 
-* `lightboxgallery.thumb.options` (default: `["width" => 800, "height" => 800, "crop" => true]`)
+* `wottpal.lightboxgallery.thumb.options` (default: `["width" => 800, "height" => 800, "crop" => true]`)
 
 *Define the options for the selected `thumb.provider`. Works exactly the same way as you would use the options with their respective functions. If you set the `thumb.provider` to something else than `'thumb'` or `false` you **must** set this option.*
 
